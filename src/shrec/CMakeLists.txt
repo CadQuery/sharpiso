@@ -57,15 +57,15 @@ IF(MSVC AND MSVC_VERSION GREATER 1600)
 # Just enable all warnings for debug and set NDEBUG for release
 set(CMAKE_CXX_FLAGS_DEBUG "/W4")
 set(CMAKE_CXX_FLAGS_RELEASE "/D NDEBUG")
-  message(
-  "Your compiler probably does support C++11. This project requires C++11")
-ELSEIF(CMAKE_COMPILER_IS_GNUCXX)
-SET(CMAKE_CXX_FLAGS "-std=c++0x")
-ELSEIF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-SET(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
-else()
-  message(FATAL_ERROR
-  "Your compiler probably does not support C++11. This project requires C++11")
+#  message(
+#  "Your compiler probably does support C++11. This project requires C++11")
+#ELSEIF(CMAKE_COMPILER_IS_GNUCXX)
+#SET(CMAKE_CXX_FLAGS "-std=c++0x")
+#ELSEIF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+#SET(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
+#else()
+#  message(FATAL_ERROR
+#  "Your compiler probably does not support C++11. This project requires C++11")
 ENDIF()
 
 SET(SHREC_SUB_LIST shrec.cxx shrecIO.cxx
@@ -90,3 +90,5 @@ INSTALL(TARGETS shrec DESTINATION "bin/$ENV{OSTYPE}")
 
 ADD_CUSTOM_TARGET(tar WORKING_DIRECTORY ../.. COMMAND tar cvfh ${SHREC_DIR}/shrec.tar ${SHREC_DIR}/*.cxx ${SHREC_DIR}/*.h ${SHREC_DIR}/*.txx ${TAR_SHARPISO_SRC_DIR}/*.cxx ${TAR_SHARPISO_SRC_DIR}/*.h ${TAR_SHARPISO_SRC_DIR}/*.txx include/*.h include/*.txx ${SHREC_DIR}/CMakeLists.txt ${SHREC_DIR}/INSTALL ${SHREC_DIR}/RELEASE_NOTES)
 
+# Curv uses C++14; I want to ensure that the Shrec code is compatible.
+set_property(TARGET shrec PROPERTY CXX_STANDARD 14)

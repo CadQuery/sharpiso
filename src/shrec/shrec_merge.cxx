@@ -3021,6 +3021,9 @@ namespace {
     if (!does_region_contain_cube(region, from_cube, isovert))
       { return(false); }
 
+    // 4 April 2019: @doug-moen: added 'return' keyword before call to
+    // check_map_ambig_pair().
+    return
     check_map_ambig_pair
       (scalar_grid, isodual_table, ambig_info, isovalue, from_cube, 
        adjacent_cube, to_cube, isovert, param_flags, merge_param, gcube_map);

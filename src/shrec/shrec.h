@@ -251,16 +251,16 @@ namespace SHREC {
     static const bool flag_select_mod6 = true;
 
     /// Maximum distance from cube boundary to isosurface vertex outside cube.
-    static const COORD_TYPE max_dist = 1.0;
+    static constexpr COORD_TYPE max_dist = 1.0;
 
     /// Maximum small eigenvalue.
     /// Eigenvalues below this value are set to zero.
-    static const EIGENVALUE_TYPE max_small_eigenvalue = 0.1;
+    static constexpr EIGENVALUE_TYPE max_small_eigenvalue = 0.1;
 
     /// Offset for cube boundary for gradient selection.
     ///   Only gradients whose planes intersect the offset cube
     ///   are selected.
-    static const SIGNED_COORD_TYPE grad_selection_cube_offset = 0.5;
+    static constexpr SIGNED_COORD_TYPE grad_selection_cube_offset = 0.5;
   };
 
 }

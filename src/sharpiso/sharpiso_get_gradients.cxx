@@ -2442,6 +2442,9 @@ void SHARPISO::GET_GRADIENTS_PARAM::SetGradSelectionMethod
   case GRAD_9x9x9:
     max_grad_dist = 4;
     break;
+
+  default: // avoid compiler warning about missing cases
+    break;
   }
 }
 
